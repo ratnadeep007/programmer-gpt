@@ -1,7 +1,6 @@
 import os
 import streamlit as st
 from dotenv import load_dotenv
-from streamlit_chat import message
 from langchain.prompts import PromptTemplate
 from langchain.llms import OpenAI
 from langchain.chains import SimpleSequentialChain, LLMChain
@@ -34,6 +33,7 @@ llm_chain = LLMChain(
     verbose=True,
 )
 
+st.set_page_config(page_title="Programmer GPT")
 st.title("Programmer GPT")
 st.markdown("A GPT-4 powered programmer that tries to solve logical problem using programming")
 st.markdown("Example: \nJohn has 15 apple, he distributed apples equally 3 people and Jessie has 3 mangos and she also distributed those equally. How many fruits does each one have now?")
