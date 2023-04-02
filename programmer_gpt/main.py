@@ -42,6 +42,7 @@ st.markdown("Example: \nJohn has 15 apple, he distributed apples equally 3 peopl
 print(st.session_state)
 
 question = st.session_state.question
+is_clear = False
 
 # if st.session_state.convo_type == 'new':
 language_selectbox = st.empty()
@@ -55,10 +56,13 @@ placeholder = st.empty()
 with placeholder.container():
     col1, col2 = st.columns([9,1])
     question_input = st.empty()
-    question = col1.text_area("dsadasdas", placeholder="Problem Statement", max_chars=200, height=50, label_visibility="collapsed") 
+    question = col1.text_area("dsadasdas", placeholder="Problem Statement", max_chars=200, height=50, label_visibility="collapsed")
+    print(question)
     if question == "":
         col2.markdown("###")
-    col2.button("Clear")
+    is_clear = col2.button("Clear")
+    if is_clear:
+        question = ""
     if question != "":
         question_input.empty()
         with placeholder.container():
