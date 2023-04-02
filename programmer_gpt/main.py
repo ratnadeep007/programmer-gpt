@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 from streamlit_chat import message
 from langchain.prompts import PromptTemplate
 from langchain.llms import OpenAI
+from langchain.chat_models import ChatOpenAI
 from langchain.chains import SimpleSequentialChain, LLMChain
 from langchain.chains.conversation.memory import ConversationBufferMemory
 
@@ -15,7 +16,7 @@ if 'convo_type' not in st.session_state:
 
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
-llm = OpenAI(temperature=.4, model_name='gpt-3.5-turbo')
+llm = ChatOpenAI(temperature=.4) # type: ignore
 template = """You are a logical problem solver who uses programming. You understand the
 question then write proper {language} code for that problem code in markdown format
 annonate code block with proper programming languaage and 
